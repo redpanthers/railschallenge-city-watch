@@ -11,7 +11,7 @@ Rails.application.configure do
   config.action_controller.allow_forgery_protection = false
 
   config.action_mailer.delivery_method = :test
-
+  config.action_controller.action_on_unpermitted_parameters = :raise
   config.active_support.test_order = :random
   config.active_support.deprecation = :stderr
 end

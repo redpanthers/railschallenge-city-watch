@@ -33,22 +33,22 @@ class RespondersCreateTest < ActionDispatch::IntegrationTest
     assert_equal 422, response.status
     assert_equal({ 'message' => { 'capacity' => ['is not included in the list'] } }, JSON.parse(body))
 
-    post '/responders', responder: { type: 'Fire', name: 'F-201', capacity: 1 }
+    post '/responders', responder: {  type: 'Fire', name: 'F-201', capacity: 1 }
     assert_equal 201, response.status
 
-    post '/responders', responder: { type: 'Fire', name: 'F-202', capacity: 2 }
+    post '/responders', responder: {  type: 'Fire', name: 'F-202', capacity: 2 }
     assert_equal 201, response.status
 
-    post '/responders', responder: { type: 'Fire', name: 'F-203', capacity: 3 }
+    post '/responders', responder: {  type: 'Fire', name: 'F-203', capacity: 3 }
     assert_equal 201, response.status
 
-    post '/responders', responder: { type: 'Fire', name: 'F-204', capacity: 4 }
+    post '/responders', responder: {  type: 'Fire', name: 'F-204', capacity: 4 }
     assert_equal 201, response.status
 
-    post '/responders', responder: { type: 'Fire', name: 'F-205', capacity: 5 }
+    post '/responders', responder: {  type: 'Fire', name: 'F-205', capacity: 5 }
     assert_equal 201, response.status
 
-    post '/responders', responder: { type: 'Fire', name: 'F-206', capacity: 6 }
+    post '/responders', responder: {  type: 'Fire', name: 'F-206', capacity: 6 }
     assert_equal 422, response.status
     assert_equal({ 'message' => { 'capacity' => ['is not included in the list'] } }, JSON.parse(body))
   end
