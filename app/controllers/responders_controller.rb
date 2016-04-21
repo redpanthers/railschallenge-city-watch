@@ -1,5 +1,5 @@
 class RespondersController < ApplicationController
-	before_action :set_responder, only: [:show, :edit, :update, :destroy]
+	before_action :set_responder, only: [:edit, :update, :destroy]
 
   def index
     @responders = Responder.all
@@ -7,9 +7,12 @@ class RespondersController < ApplicationController
   end
 
   def show
-    respond_to do |format|
-      format.json { render json: @responder }
-    end
+  	@responder = Responder.find_by_name(params[:name])
+  	if @responder
+  		render json: {responder: @responder}
+  	else
+  		render json: {responder: @responder}, status: 404
+  	end
   end
 
   def create
