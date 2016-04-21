@@ -13,20 +13,22 @@ class RespondersController < ApplicationController
   end
 
   def create
-		@responder = Responder.new(responder_params)
-    respond_to do |format|
+  	begin
+			@responder = Responder.new(responder_params)
       if @responder.save
-        format.json { render json: @responder, status: 201}
+        render json: {responder: @responder.as_json}, status: 201
       else
-        format.json { render json: @responder.errors, status: :unprocessable_entity }
+        render json: {message: @responder.errors}, status: :unprocessable_entity
       end
+    rescue Exception => e
+      render json: {message: e.message}, status: :unprocessable_entity
     end
-	end
+  end
 
 
 	private
 	def responder_params
-    params.require(:responder).permit(:emergency_code, :type, :name, :capacity, :on_duty)
+    params.require(:responder).permit( :type, :name, :capacity)
   end
 
   def set_responder

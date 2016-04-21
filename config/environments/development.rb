@@ -7,7 +7,7 @@ Rails.application.configure do
   config.action_mailer.raise_delivery_errors = false
   config.active_support.deprecation = :log
   config.active_record.migration_error = :page_load
-
+  config.action_controller.action_on_unpermitted_parameters = :raise
   config.assets.enabled = false
   config.generators do |g|
     g.assets false
