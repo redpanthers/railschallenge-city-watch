@@ -3,7 +3,7 @@ class RespondersController < ApplicationController
 
   def index
     @responders = Responder.all
-    render json: @responders
+    render json: {responders: @responders}
   end
 
   def show
